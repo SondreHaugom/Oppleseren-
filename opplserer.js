@@ -1,18 +1,33 @@
 let speech = new SpeechSynthesisUtterance();
 let voices = [];
 
+let voiceSelect = document.querySelector(".voice_select select"); // Velg <select> elementet
+
 function getVoices() {
     voices = window.speechSynthesis.getVoices();
-    
-    // Velg en Google- eller Microsoft-stemme hvis tilgjengelig
-    speech.voice = voices.find(voice => 
-        voice.name.includes("Google") || voice.name.includes("Microsoft") || voice.name.includes("Natural")
-    ) || voices[0]; // Hvis ingen finnes, bruk første tilgjengelige
+    voiceSelect.innerHTML = ""; // Tømmer dropdown før vi legger til nye stemmer
+
+    voices.forEach((voice, i) => {
+        let option = document.createElement("option");
+        option.textContent = voice.name;
+        option.value = i;
+        voiceSelect.appendChild(option);
+    });
+
+    // Velg en standardstemme (f.eks. en Google-stemme)
+    let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn") || voice.name.includes("Microsoft Finn")) || voices[0];
+    speech.voice = defaultVoice;
+    voiceSelect.value = voices.indexOf(defaultVoice);
 }
 
-
-// Oppdater listen over stemmer
+// Last inn stemmene når siden åpnes
 window.speechSynthesis.onvoiceschanged = getVoices;
+getVoices(); // Kall denne manuelt for å sikre at stemmer lastes i Chrome
+
+// Endre stemmen når brukeren velger en annen
+voiceSelect.addEventListener("change", () => {
+    speech.voice = voices[parseInt(voiceSelect.value)];
+});
 
 // Knytt opplesningen til knappen
 document.querySelector(".lese_knapp").addEventListener("click", () => {
@@ -21,10 +36,12 @@ document.querySelector(".lese_knapp").addEventListener("click", () => {
     window.speechSynthesis.speak(speech);
 }); 
 
+// Pause opplesningen
 document.querySelector(".stopp_knapp").addEventListener("click", () => {
     window.speechSynthesis.pause();
 });
 
+// Fortsett opplesningen
 document.querySelector(".fortsett_knapp").addEventListener("click", () => {
     window.speechSynthesis.resume();
 });

@@ -115,6 +115,19 @@ footer {
     height: 250px;
     border-radius: 10px;
 }
+select{
+    margin-top: 10px;
+    flex: 1;
+    color: #fff;
+    background: #557d9e;
+    border-radius: 10px;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff" width="18px" height="18px"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position-x: calc(100% - 20px);
+    background-position-y:20px; 
+}
 
 
 
@@ -153,6 +166,12 @@ footer {
     .logo{
         height: 50px;
         border-radius: 10px;
+    }
+    select {
+        background-size: 12px; /* Juster størrelsen på pilen for små skjermer */
+        padding: 10px 15px; /* Øk padding for bedre klikkbarhet */
+        width: 300px;
+        font-size: 10px;
     }
 
     
