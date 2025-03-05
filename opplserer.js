@@ -16,7 +16,8 @@ window.speechSynthesis.onvoiceschanged = getVoices;
 
 // Knytt opplesningen til knappen
 document.querySelector(".lese_knapp").addEventListener("click", () => {
-    speech.text = document.querySelector(".text_box").value;
+    let textBox = document.querySelector(".text_box"); 
+    speech.text = textBox.innerText || textBox.textContent; // Henter teksten fra div
     window.speechSynthesis.speak(speech);
 }); 
 

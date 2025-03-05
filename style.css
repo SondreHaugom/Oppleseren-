@@ -27,14 +27,22 @@ h1{
 
 .text_box {
     margin-top: 20px;
-    height: 500px;
-    width: 800px;
+    height: 500px; /* Fast høyde */
+    width: 800px; /* Fast bredde */
     font-size: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
-    justify-content: center;
-    display: flex;
+    padding: 15px;
+    border: 2px solid #616fc1;
+    background: #f4f4ff; /* Lys bakgrunn for lesbarhet */
+    color: #333;
+    outline: none;
+    overflow-y: auto; /* Aktiverer scrolling for lange tekster */
+    overflow-x: hidden; /* Skjuler horisontal scrolling */
+    word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
+    white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
 }
+
 .lese_knapp{
     background-color:  #adcda9;
     margin-top: 10px;
@@ -103,6 +111,10 @@ footer {
     bottom: 0;
     margin-top: 20%;
 }
+.logo{
+    height: 250px;
+    border-radius: 10px;
+}
 
 
 
@@ -116,7 +128,25 @@ footer {
         height: 110px;
         border-bottom: 3px solid #000004; /* En fin kant under headeren */
     }
-    
+    .text_box {
+        margin-top: 20px;
+        height: 450px; /* Fast høyde */
+        width: 270px; /* Tilpasser seg skjermen */
+        max-width: 400px; /* Unngår at den blir for stor */
+        min-width: 120px; /* Sikrer at den ikke blir for liten */
+        font-size: 20px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
+        padding: 15px;
+        border: 2px solid #616fc1;
+        background: #f4f4ff; /* Lys bakgrunn for lesbarhet */
+        color: #333;
+        outline: none;
+        overflow-y: auto; /* Aktiverer scrolling for lange tekster */
+        overflow-x: hidden; /* Skjuler horisontal scrolling */
+        word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
+        white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
+    }
     h1{
         font-size: 20px;
     }
@@ -124,19 +154,10 @@ footer {
         height: 50px;
         border-radius: 10px;
     }
-    .text_box {
-        margin-top: 20px;
-        height: 500px;
-        width: 290px;
-        font-size: 20px;
-        border-radius: 10px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
-        justify-content: center;
-        display: flex;
-    }
+
     
 }
-@media only screen and (min-width: 900px) and (max-width: 1600px) {
+@media only screen and (min-width: 800px) and (max-width: 1600px) {
     header {
         background: linear-gradient(45deg, #557d9e, #c2bd92);
         color: white;
@@ -146,6 +167,23 @@ footer {
         height: 150px;
         border-bottom: 3px solid #000004; /* En fin kant under headeren */
     }
+    .text_box {
+        margin-top: 20px;
+        height: 700px; /* Fast høyde */
+        width: 700px; /* Tilpasser seg skjermen */
+        font-size: 20px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
+        padding: 15px;
+        border: 2px solid #616fc1;
+        background: #f4f4ff; /* Lys bakgrunn for lesbarhet */
+        color: #333;
+        outline: none;
+        overflow-y: auto; /* Aktiverer scrolling for lange tekster */
+        overflow-x: hidden; /* Skjuler horisontal scrolling */
+        word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
+        white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
+    }
     
     h1{
         font-size: 30px;
@@ -153,16 +191,6 @@ footer {
     .logo{
         height: 70px;
         border-radius: 10px;
-    }
-    .text_box {
-        margin-top: 20px;
-        height: 700px;
-        width: 800px;
-        font-size: 20px;
-        border-radius: 10px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
-        justify-content: center;
-        display: flex;
     }
     footer {
         background: linear-gradient(45deg, #557d9e, #c2bd92);
