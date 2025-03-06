@@ -1,7 +1,7 @@
-let speech = new SpeechSynthesisUtterance();
 let voices = [];
-
 let voiceSelect = document.querySelector(".voice_select select"); // Velg <select> elementet
+let speech = new SpeechSynthesisUtterance();
+let textBox = document.querySelector(".text_box"); // Definer textBox her
 
 function getVoices() {
     voices = window.speechSynthesis.getVoices();
@@ -14,7 +14,7 @@ function getVoices() {
         voiceSelect.appendChild(option);
     });
 
-    // Velg en standardstemme (f.eks. en Google-stemme)
+    // Velg en standardstemme
     let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn") || voice.name.includes("Microsoft Finn")) || voices[0];
     speech.voice = defaultVoice;
     voiceSelect.value = voices.indexOf(defaultVoice);
@@ -31,17 +31,24 @@ voiceSelect.addEventListener("change", () => {
 
 // Knytt opplesningen til knappen
 document.querySelector(".lese_knapp").addEventListener("click", () => {
-    let textBox = document.querySelector(".text_box"); 
+    // Opprett nytt speech objekt for hver ny opplesning
+    let speech = new SpeechSynthesisUtterance();
     speech.text = textBox.innerText || textBox.textContent; // Henter teksten fra div
+    speech.voice = voices[parseInt(voiceSelect.value)];
     window.speechSynthesis.speak(speech);
-}); 
+});
 
 // Pause opplesningen
-document.querySelector(".stopp_knapp").addEventListener("click", () => {
+document.querySelector(".pause_knapp").addEventListener("click", () => {
     window.speechSynthesis.pause();
 });
 
 // Fortsett opplesningen
 document.querySelector(".fortsett_knapp").addEventListener("click", () => {
     window.speechSynthesis.resume();
+});
+
+// Stopp opplesningen
+document.querySelector(".stopp_knapp").addEventListener("click", () => {
+    window.speechSynthesis.cancel();
 });

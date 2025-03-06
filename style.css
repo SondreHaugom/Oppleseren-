@@ -95,6 +95,21 @@ h1{
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
     transform: translateY(-4px); /* Litt løft av knappen ved hover */
 }
+.pause_knapp{
+    background-color:  #adcda9;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 300px;
+    height: 50px;
+    transition: all 0.3s ease;
+    border-radius: 30px;  
+}
+.pause_knapp:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
+    transform: translateY(-4px); /* Litt løft av knappen ved hover */
+}
 
 
 
@@ -213,7 +228,7 @@ nav a{
     }
     .text_box {
         margin-top: 20px;
-        height: 700px; /* Fast høyde */
+        height: 400px; /* Fast høyde */
         width: 700px; /* Tilpasser seg skjermen */
         font-size: 20px;
         border-radius: 10px;
@@ -301,5 +316,13 @@ nav a{
     .fortsett_knapp:hover {
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
         transform: translateY(-4px); /* Litt løft av knappen ved hover */
+    }
+    .om_tekst{
+        margin-left: 300px;
+        margin-right: 300px;
+        font-size: 20px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        padding: 10px;
     }
 }
