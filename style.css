@@ -168,7 +168,9 @@ nav a{
     color: rgb(202, 104, 12); 
     cursor: pointer;  
  }
-
+ .highlight {
+    background-color: yellow;
+}
 
 
 @media only screen and (min-width: 200px) and (max-width: 900px) {
@@ -199,6 +201,14 @@ nav a{
         overflow-x: hidden; /* Skjuler horisontal scrolling */
         word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
         white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
+    }
+    .om_tekst{
+        margin-left: 300px;
+        margin-right: 300px;
+        font-size: 20px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        padding: 10px;
     }
     h1{
         font-size: 20px;
@@ -318,8 +328,8 @@ nav a{
         transform: translateY(-4px); /* Litt løft av knappen ved hover */
     }
     .om_tekst{
-        margin-left: 300px;
-        margin-right: 300px;
+        margin-left: 200px;
+        margin-right: 200px;
         font-size: 20px;
         border-radius: 5px;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);

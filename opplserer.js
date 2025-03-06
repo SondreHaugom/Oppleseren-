@@ -1,40 +1,69 @@
+// Funksjonalitet for opplesning av tekst
+// Bruker Web Speech API for å opplese tekst
+// Bruker SpeechSynthesisUtterance for å opplese tekst
+// Bruker SpeechSynthesisVoice for å velge stemme
+// Bruker SpeechSynthesis for å styre opplesningen
 let voices = [];
-let voiceSelect = document.querySelector(".voice_select select"); // Velg <select> elementet
+let voiceSelect = document.querySelector(".voice_select select");
+let textBox = document.querySelector(".text_box");
 let speech = new SpeechSynthesisUtterance();
-let textBox = document.querySelector(".text_box"); // Definer textBox her
 
+// Hent stemmene som er tilgjengelige
 function getVoices() {
     voices = window.speechSynthesis.getVoices();
-    voiceSelect.innerHTML = ""; // Tømmer dropdown før vi legger til nye stemmer
+    voiceSelect.innerHTML = "";
 
+    // Legg til stemmene i dropdown-menyen
     voices.forEach((voice, i) => {
         let option = document.createElement("option");
         option.textContent = voice.name;
         option.value = i;
         voiceSelect.appendChild(option);
     });
-
-    // Velg en standardstemme
-    let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn") || voice.name.includes("Microsoft Finn")) || voices[0];
+    // Velger en standard stemme
+    let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn")) || voices[0];
     speech.voice = defaultVoice;
     voiceSelect.value = voices.indexOf(defaultVoice);
 }
 
 // Last inn stemmene når siden åpnes
 window.speechSynthesis.onvoiceschanged = getVoices;
-getVoices(); // Kall denne manuelt for å sikre at stemmer lastes i Chrome
+getVoices();
 
 // Endre stemmen når brukeren velger en annen
 voiceSelect.addEventListener("change", () => {
     speech.voice = voices[parseInt(voiceSelect.value)];
 });
 
-// Knytt opplesningen til knappen
+// Uthev ord under opplesning
 document.querySelector(".lese_knapp").addEventListener("click", () => {
-    // Opprett nytt speech objekt for hver ny opplesning
-    let speech = new SpeechSynthesisUtterance();
-    speech.text = textBox.innerText || textBox.textContent; // Henter teksten fra div
+    let text = textBox.innerText || textBox.textContent;
+    let words = text.split(/\s+/);
+
+    textBox.innerHTML = words.map(word => `<span>${word}</span>`).join(" ");
+    let wordElements = textBox.getElementsByTagName("span");
+
+    let wordIndex = 0;
+    let speech = new SpeechSynthesisUtterance(text);
     speech.voice = voices[parseInt(voiceSelect.value)];
+
+    // merkerer ord som blir lest
+    speech.onboundary = (event) => {
+        if (event.name === "word") {
+            if (wordIndex > 0) {
+                wordElements[wordIndex - 1].classList.remove("highlight");
+            }
+            if (wordIndex < wordElements.length) {
+                wordElements[wordIndex].classList.add("highlight");
+            }
+            wordIndex++;
+        }
+    };
+    // fjerner markeringen når opplesningen er ferdig
+    speech.onend = () => {
+        wordElements[wordIndex - 1]?.classList.remove("highlight");
+    };
+
     window.speechSynthesis.speak(speech);
 });
 
