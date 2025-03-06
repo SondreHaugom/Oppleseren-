@@ -40,9 +40,10 @@ document.querySelector(".lese_knapp").addEventListener("click", () => {
     let text = textBox.innerText || textBox.textContent;
     let words = text.split(/\s+/);
 
+// Deler opp teksten i ord og legger til span-elementer for hvert ord
     textBox.innerHTML = words.map(word => `<span>${word}</span>`).join(" ");
     let wordElements = textBox.getElementsByTagName("span");
-
+// Starter opplesningen
     let wordIndex = 0;
     let speech = new SpeechSynthesisUtterance(text);
     speech.voice = voices[parseInt(voiceSelect.value)];
