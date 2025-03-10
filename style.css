@@ -13,7 +13,7 @@ body {
 }
 
 header {
-    background: linear-gradient(45deg, #557d9e, #c2bd92);
+    background-color: #283e50;
     color: white;
     text-align: center;
     padding: 20px;
@@ -23,6 +23,7 @@ header {
 
 h1{
     font-size: 40px;
+   
 }
 
 .text_box {
@@ -53,6 +54,7 @@ h1{
     height: 50px;
     transition: all 0.3s ease;
     border-radius: 30px;
+
 }
 .lese_knapp:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
@@ -63,6 +65,7 @@ h1{
     justify-content: center;
     display: flex;
     border-radius: 80px;
+    
    
 }
 .stopp_knapp{
@@ -111,10 +114,12 @@ h1{
     transform: translateY(-4px); /* Litt løft av knappen ved hover */
 }
 
-
+.info_tekst{
+    margin-top:  20px;
+}
 
 footer {
-    background: linear-gradient(45deg, #557d9e, #c2bd92);
+    background-color: #283e50;
     color: white;
     text-align: center;
     padding: 15px;
@@ -125,11 +130,18 @@ footer {
     position: relative;
     bottom: 0;
     margin-top: 20%;
+   
 }
-.logo{
+.logo {
     height: 250px;
-    border-radius: 10px;
+    border-radius: 200px;
+    border-style: solid;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 40px; /* Juster avstand fra venstre */
+    top: 10px;  /* Juster avstand fra toppen */
 }
+
 select{
     margin-top: 10px;
     flex: 1;
@@ -175,7 +187,7 @@ nav a{
 
 @media only screen and (min-width: 200px) and (max-width: 900px) {
     header {
-        background: linear-gradient(45deg, #557d9e, #c2bd92);
+        background-color: #283e50;
         color: white;
         text-align: center;
         padding: 20px;
@@ -213,9 +225,14 @@ nav a{
     h1{
         font-size: 20px;
     }
-    .logo{
+    .logo {
         height: 50px;
-        border-radius: 10px;
+        border-radius: 200px;
+        border-style: solid;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        left: 40px; /* Juster avstand fra venstre */
+        top: 10px;  /* Juster avstand fra toppen */
     }
     select {
         background-size: 12px; /* Juster størrelsen på pilen for små skjermer */
@@ -228,7 +245,7 @@ nav a{
 }
 @media only screen and (min-width: 800px) and (max-width: 1600px) {
     header {
-        background: linear-gradient(45deg, #557d9e, #c2bd92);
+        background-color: #283e50;
         color: white;
         text-align: center;
         padding: 20px;
@@ -257,12 +274,17 @@ nav a{
     h1{
         font-size: 30px;
     }
-    .logo{
-        height: 70px;
-        border-radius: 10px;
+    .logo {
+        height: 130px;
+        border-radius: 200px;
+        border-style: solid;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        left: 40px; /* Juster avstand fra venstre */
+        top: 10px;  /* Juster avstand fra toppen */
     }
     footer {
-        background: linear-gradient(45deg, #557d9e, #c2bd92);
+        background-color: #283e50;
         color: white;
         text-align: center;
         padding: 15px;

@@ -35,34 +35,48 @@ voiceSelect.addEventListener("change", () => {
     speech.voice = voices[parseInt(voiceSelect.value)];
 });
 
-// Uthev ord under opplesning
 document.querySelector(".lese_knapp").addEventListener("click", () => {
-    let text = textBox.innerText || textBox.textContent;
-    let words = text.split(/\s+/);
+    let textNodes = [];
+    
+    function getTextNodes(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            textNodes.push(node);
+        } else {
+            node.childNodes.forEach(getTextNodes);
+        }
+    }
+    
+    let textBox = document.querySelector(".text_box");
+    getTextNodes(textBox);
+    
+    textNodes.forEach(node => {
+        let words = node.textContent.split(/\s+/);
+        let fragment = document.createDocumentFragment();
+        
+        words.forEach((word, i) => {
+            if (word.trim() === "") return;
+            let span = document.createElement("span");
+            span.textContent = word + " ";
+            span.classList.add("word");
+            fragment.appendChild(span);
+        });
 
-// Deler opp teksten i ord og legger til span-elementer for hvert ord
-    textBox.innerHTML = words.map(word => `<span>${word}</span>`).join(" ");
-    let wordElements = textBox.getElementsByTagName("span");
-// Starter opplesningen
+        node.replaceWith(fragment);
+    });
+
+    let wordElements = textBox.querySelectorAll(".word");
     let wordIndex = 0;
-    let speech = new SpeechSynthesisUtterance(text);
+    let speech = new SpeechSynthesisUtterance(textBox.innerText);
     speech.voice = voices[parseInt(voiceSelect.value)];
 
-    // merkerer ord som blir lest
     speech.onboundary = (event) => {
-        if (event.name === "word") {
-            if (wordIndex > 0) {
-                wordElements[wordIndex - 1].classList.remove("highlight");
-            }
-            if (wordIndex < wordElements.length) {
-                wordElements[wordIndex].classList.add("highlight");
-            }
-            wordIndex++;
-        }
+        if (wordIndex > 0) wordElements[wordIndex - 1].classList.remove("highlight");
+        if (wordIndex < wordElements.length) wordElements[wordIndex].classList.add("highlight");
+        wordIndex++;
     };
-    // fjerner markeringen når opplesningen er ferdig
+
     speech.onend = () => {
-        wordElements[wordIndex - 1]?.classList.remove("highlight");
+        wordElements.forEach(el => el.classList.remove("highlight"));
     };
 
     window.speechSynthesis.speak(speech);
