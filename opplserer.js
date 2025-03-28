@@ -27,7 +27,7 @@ voiceSelect.addEventListener("change", () => {
 });
 
 // Del teksten i mindre biter
-function splitTextIntoChunks(text, chunkSize = 200) {
+function splitTextIntoChunks(text, chunkSize = 50) {
     let words = text.split(/\s+/);
     let chunks = [];
     for (let i = 0; i < words.length; i += chunkSize) {
@@ -39,6 +39,7 @@ function splitTextIntoChunks(text, chunkSize = 200) {
 // Les opp én bit om gangen
 function readChunks(chunks, wordElements) {
     let currentChunkIndex = 0;
+    let globalWordIndex = 0; // Global indeks for hele teksten
 
     function readNextChunk() {
         if (currentChunkIndex >= chunks.length) {
@@ -49,21 +50,22 @@ function readChunks(chunks, wordElements) {
         let chunk = chunks[currentChunkIndex];
         let speech = new SpeechSynthesisUtterance(chunk);
         speech.voice = voices[parseInt(voiceSelect.value)];
-        let localWordIndex = 0;
+        let localWordIndex = 0; // Indeks for ordene i denne biten
 
         speech.onboundary = (event) => {
-            if (localWordIndex > 0) {
-                wordElements[localWordIndex - 1].classList.remove("highlight");
+            if (globalWordIndex > 0) {
+                wordElements[globalWordIndex - 1].classList.remove("highlight");
             }
-            if (localWordIndex < wordElements.length) {
-                wordElements[localWordIndex].classList.add("highlight");
+            if (globalWordIndex < wordElements.length) {
+                wordElements[globalWordIndex].classList.add("highlight");
             }
             localWordIndex++;
+            globalWordIndex++; // Oppdater global indeks
         };
 
         speech.onend = () => {
             currentChunkIndex++;
-            readNextChunk();
+            readNextChunk(); // Les neste bit
         };
 
         window.speechSynthesis.speak(speech);
@@ -75,7 +77,7 @@ function readChunks(chunks, wordElements) {
 // Start opplesningen
 document.querySelector(".lese_knapp").addEventListener("click", () => {
     let text = textBox.innerText;
-    let chunks = splitTextIntoChunks(text, 200);
+    let chunks = splitTextIntoChunks(text, 50);
 
     let textNodes = [];
     function getTextNodes(node) {
