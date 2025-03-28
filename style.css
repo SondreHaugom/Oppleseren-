@@ -28,8 +28,8 @@ h1{
 
 .text_box {
     margin-top: 20px;
-    height: 500px; /* Fast høyde */
-    width: 800px; /* Fast bredde */
+    height: 700px; /* Fast høyde */
+    width: 1000px; /* Fast bredde */
     font-size: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
@@ -47,7 +47,7 @@ h1{
     background-color: #adcda9;
     margin-top: 10px;
     display: inline-block; /* Plasserer knappene ved siden av hverandre */
-    width: 170px; /* Ensartet bredde for alle knappene */
+    width: 198px; /* Ensartet bredde for alle knappene */
     height: 50px; /* Ensartet høyde for alle knappene */
     transition: all 0.3s ease;
     border-radius: 10px;
@@ -201,8 +201,8 @@ nav a{
     }
     .text_box {
         margin-top: 20px;
-        height: 400px; /* Fast høyde */
-        width: 700px; /* Tilpasser seg skjermen */
+        height: 450px; /* Fast høyde */
+        width: 800px; /* Tilpasser seg skjermen */
         font-size: 20px;
         border-radius: 10px;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
