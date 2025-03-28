@@ -43,73 +43,19 @@ h1{
     word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
     white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
 }
+.lese_knapp, .stopp_knapp, .fortsett_knapp, .pause_knapp {
+    background-color: #adcda9;
+    margin-top: 10px;
+    display: inline-block; /* Plasserer knappene ved siden av hverandre */
+    width: 170px; /* Ensartet bredde for alle knappene */
+    height: 50px; /* Ensartet høyde for alle knappene */
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    margin-right: 10px; /* Mellomrom mellom knappene */
+    text-align: center;
+}
 
-.lese_knapp{
-    background-color:  #adcda9;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 300px;
-    height: 50px;
-    transition: all 0.3s ease;
-    border-radius: 30px;
-
-}
-.lese_knapp:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
-    transform: translateY(-4px); /* Litt løft av knappen ved hover */
-}
-.knapp_tekst{
-    font-size: 15px;
-    justify-content: center;
-    display: flex;
-    border-radius: 80px;
-    
-   
-}
-.stopp_knapp{
-    background-color:  #adcda9;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 300px;
-    height: 50px;
-    transition: all 0.3s ease;
-    border-radius: 30px;
-}
-.stopp_knapp:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
-    transform: translateY(-4px); /* Litt løft av knappen ved hover */
-}
-.fortsett_knapp{
-    background-color:  #adcda9;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 300px;
-    height: 50px;
-    transition: all 0.3s ease;
-    border-radius: 30px;
-}
-.fortsett_knapp:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
-    transform: translateY(-4px); /* Litt løft av knappen ved hover */
-}
-.pause_knapp{
-    background-color:  #adcda9;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 300px;
-    height: 50px;
-    transition: all 0.3s ease;
-    border-radius: 30px;  
-}
-.pause_knapp:hover {
+.lese_knapp:hover, .stopp_knapp:hover, .fortsett_knapp:hover, .pause_knapp:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
     transform: translateY(-4px); /* Litt løft av knappen ved hover */
 }
@@ -133,7 +79,7 @@ footer {
    
 }
 .logo {
-    height: 250px;
+    height: 140px;
     border-radius: 200px;
     border-style: solid;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
@@ -296,58 +242,6 @@ nav a{
         bottom: 0;
         margin-top: 30%;
         height: 200px;
-    }
-    .lese_knapp{
-        background-color:  #adcda9;
-        margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        width: 300px;
-        height: 50px;
-        transition: all 0.3s ease;
-        border-radius: 30px;
-    }
-    .lese_knapp:hover {
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
-        transform: translateY(-4px); /* Litt løft av knappen ved hover */
-    }
-    .knapp_tekst{
-        font-size: 15px;
-        justify-content: center;
-        display: flex;
-        border-radius: 80px;
-       
-    }
-    .stopp_knapp{
-        background-color:  #adcda9;
-        margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        width: 300px;
-        height: 50px;
-        transition: all 0.3s ease;
-        border-radius: 30px;
-    }
-    .stopp_knapp:hover {
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
-        transform: translateY(-4px); /* Litt løft av knappen ved hover */
-    }
-    .fortsett_knapp{
-        background-color:  #adcda9;
-        margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        width: 300px;
-        height: 50px;
-        transition: all 0.3s ease;
-        border-radius: 30px;
-    }
-    .fortsett_knapp:hover {
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
-        transform: translateY(-4px); /* Litt løft av knappen ved hover */
     }
     .om_tekst{
         margin-left: 200px;

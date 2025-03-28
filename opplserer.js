@@ -71,11 +71,15 @@ document.querySelector(".lese_knapp").addEventListener("click", () => {
     let speech = new SpeechSynthesisUtterance(textBox.innerText);
     speech.voice = voices[parseInt(voiceSelect.value)];
 // Marker ordet som leses opp
-    speech.onboundary = (event) => {
-        if (wordIndex > 0) wordElements[wordIndex - 1].classList.remove("highlight");
-        if (wordIndex < wordElements.length) wordElements[wordIndex].classList.add("highlight");
-        wordIndex++;
-    };
+speech.onboundary = (event) => {
+    if (wordIndex > 0 && wordElements[wordIndex - 1].classList.contains("highlight")) {
+        wordElements[wordIndex - 1].classList.remove("highlight");
+    }
+    if (wordIndex < wordElements.length && !wordElements[wordIndex].classList.contains("highlight")) {
+        wordElements[wordIndex].classList.add("highlight");
+    }
+    wordIndex++;
+};
 // Fjern markeringen når opplesningen er ferdig
     speech.onend = () => {
         wordElements.forEach(el => el.classList.remove("highlight"));
