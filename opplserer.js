@@ -78,6 +78,7 @@ speech.onboundary = (event) => {
     if (wordIndex < wordElements.length && !wordElements[wordIndex].classList.contains("highlight")) {
         wordElements[wordIndex].classList.add("highlight");
     }
+// Gå til neste ord
     wordIndex++;
 };
 // Fjern markeringen når opplesningen er ferdig
