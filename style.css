@@ -42,6 +42,7 @@ h1{
     overflow-x: hidden; /* Skjuler horisontal scrolling */
     word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
     white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
+    border-color: black; /* Setter kantfarge til svart */
 }
 .lese_knapp, .stopp_knapp, .fortsett_knapp, .pause_knapp {
     background-color: #adcda9;
@@ -61,6 +62,55 @@ h1{
 }
 .info_tekst{
     margin-top:  20px;
+}
+.speed_control {
+    margin-top: 10px;
+   
+    font-size: 16px;
+    color: #333; /* Mørk grå tekstfarge */
+    font-family: 'Arial', sans-serif;
+}
+
+.speed_control label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#speed_slider {
+    width: 80%; /* Tilpass bredde */
+    max-width: 250px; /* Maks bredde */
+    height: 8px;
+    background: #adcda9; /* Grønnaktig bakgrunn for slider */
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+#speed_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #283e50; /* Mørk blågrå for tommel */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#speed_slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #283e50;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#speed_value {
+    display: inline-block;
+    margin-top: px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #283e50; /* Mørk blågrå for tekst */
 }
 
 footer {
@@ -108,8 +158,8 @@ select:focus {
     border-color: #888; /* Mørkere kant ved fokus */
 }
 .om_tekst{
-    margin-left: 600px;
-    margin-right: 600px;
+    margin-left: 200px;
+    margin-right: 200px;
     font-size: 20px;
     border-radius: 5px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
