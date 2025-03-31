@@ -7,50 +7,55 @@ let textBox = document.querySelector(".text_box");
 function getVoices() {
     voices = window.speechSynthesis.getVoices();
     voiceSelect.innerHTML = "";
-
+    // Legg til stemmer i nedtrekkslisten
     voices.forEach((voice, i) => {
         let option = document.createElement("option");
         option.textContent = voice.name;
         option.value = i;
         voiceSelect.appendChild(option);
     });
-
+    // Sett standard stemme til Microsoft Finn eller første tilgjengelige stemme
     let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn")) || voices[0];
     voiceSelect.value = voices.indexOf(defaultVoice);
 }
-
+// Hent stemmer når de er tilgjengelige (for nettlesere som laster dem asynkront)
 window.speechSynthesis.onvoiceschanged = getVoices;
 getVoices();
-
+// Hent stemmer når siden lastes inn (for nettlesere som laster dem synkront)
 voiceSelect.addEventListener("change", () => {
     speech.voice = voices[parseInt(voiceSelect.value)];
 });
 
 // Del teksten i mindre biter
 function splitTextIntoChunks(text, chunkSize = 50) {
+    // Del teksten i ord og grupper dem i biter av chunkSize ord hver
     let words = text.split(/\s+/);
     let chunks = [];
+    // Hvis teksten er kortere enn chunkSize, returner hele teksten som en bit
     for (let i = 0; i < words.length; i += chunkSize) {
         chunks.push(words.slice(i, i + chunkSize).join(" "));
     }
     return chunks;
 }
-
-// Les opp én bit om gangen
+// Les teksten i biter og marker ord under opplesning
 function readChunks(chunks, wordElements) {
+    // Fjern eksisterende markeringer
     let currentChunkIndex = 0;
     let globalWordIndex = 0; // Global indeks for hele teksten
-
+//    wordElements.forEach(el => el.classList.remove("highlight")); // Fjern markering
     function readNextChunk() {
+        // Hvis det ikke er flere biter, stopp opplesningen
         if (currentChunkIndex >= chunks.length) {
             wordElements.forEach(el => el.classList.remove("highlight")); // Fjern markering
             return;
         }
-
+        // Hvis det er flere biter, les neste bit
         let chunk = chunks[currentChunkIndex];
+        // Lag en ny SpeechSynthesisUtterance for hver bit
         let speech = new SpeechSynthesisUtterance(chunk);
         speech.voice = voices[parseInt(voiceSelect.value)];
-        let localWordIndex = 0; // Indeks for ordene i denne biten
+
+        speech.rate = parseFloat(document.getElementById("speed_slider").value); // Bruk sliderens verdi som hastighet
 
         speech.onboundary = (event) => {
             if (globalWordIndex > 0) {
@@ -59,8 +64,7 @@ function readChunks(chunks, wordElements) {
             if (globalWordIndex < wordElements.length) {
                 wordElements[globalWordIndex].classList.add("highlight");
             }
-            localWordIndex++;
-            globalWordIndex++; // Oppdater global indeks
+            globalWordIndex++;
         };
 
         speech.onend = () => {
@@ -76,10 +80,13 @@ function readChunks(chunks, wordElements) {
 
 // Start opplesningen
 document.querySelector(".lese_knapp").addEventListener("click", () => {
+    // legger til en variabel for å sjekke om opplesningen er i gang
     let text = textBox.innerText;
+    // splitter teksten i biter av 50 ord
     let chunks = splitTextIntoChunks(text, 50);
-
+    // en array for å lagre tekstnoder
     let textNodes = [];
+    
     function getTextNodes(node) {
         if (node.nodeType === Node.TEXT_NODE) {
             textNodes.push(node);
