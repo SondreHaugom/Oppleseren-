@@ -28,8 +28,8 @@ h1{
 
 .text_box {
     margin-top: 20px;
-    height: 700px; /* Fast høyde */
-    width: 1000px; /* Fast bredde */
+    height: 450px; /* Fast høyde */
+    width: 900px; /* Fast bredde */
     font-size: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
@@ -47,7 +47,7 @@ h1{
     background-color: #adcda9;
     margin-top: 10px;
     display: inline-block; /* Plasserer knappene ved siden av hverandre */
-    width: 198px; /* Ensartet bredde for alle knappene */
+    width: 222px; /* Ensartet bredde for alle knappene */
     height: 50px; /* Ensartet høyde for alle knappene */
     transition: all 0.3s ease;
     border-radius: 10px;
@@ -59,7 +59,6 @@ h1{
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
     transform: translateY(-4px); /* Litt løft av knappen ved hover */
 }
-
 .info_tekst{
     margin-top:  20px;
 }
@@ -88,18 +87,25 @@ footer {
     top: 10px;  /* Juster avstand fra toppen */
 }
 
-select{
+select {
     margin-top: 10px;
-    flex: 1;
-    color: #fff;
-    background: #557d9e;
-    border-radius: 10px;
+    color: #333; /* Mørk grå tekstfarge */
+    background: #f9f9f9; /* Lys bakgrunn */
+    border: 1px solid #ccc; /* Lys grå kant */
+    border-radius: 5px; /* Lett avrunding */
     appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff" width="18px" height="18px"><path d="M7 10l5 5 5-5z"/></svg>');
+    padding: 8px 12px; /* Enkel padding for bedre klikkbarhet */
+    font-size: 14px; /* Standard fontstørrelse */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000000" width="16px" height="16px"><path d="M7 10l5 5 5-5z"/></svg>'); /* Pil-ikon */
     background-repeat: no-repeat;
-    background-size: 15px;
-    background-position-x: calc(100% - 20px);
-    background-position-y:20px; 
+    background-position: calc(100% - 10px) center; /* Justerer pilens posisjon */
+    cursor: pointer; /* Endrer markøren til en peker */
+}
+
+
+select:focus {
+    outline: none; /* Fjerner standard fokusramme */
+    border-color: #888; /* Mørkere kant ved fokus */
 }
 .om_tekst{
     margin-left: 600px;
@@ -131,124 +137,3 @@ nav a{
 }
 
 
-@media only screen and (min-width: 200px) and (max-width: 900px) {
-    header {
-        background-color: #283e50;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        width: 100%;
-        height: 110px;
-        border-bottom: 3px solid #000004; /* En fin kant under headeren */
-    }
-    .text_box {
-        margin-top: 20px;
-        height: 450px; /* Fast høyde */
-        width: 270px; /* Tilpasser seg skjermen */
-        max-width: 400px; /* Unngår at den blir for stor */
-        min-width: 120px; /* Sikrer at den ikke blir for liten */
-        font-size: 20px;
-        border-radius: 10px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
-        padding: 15px;
-        border: 2px solid #616fc1;
-        background: #f4f4ff; /* Lys bakgrunn for lesbarhet */
-        color: #333;
-        outline: none;
-        overflow-y: auto; /* Aktiverer scrolling for lange tekster */
-        overflow-x: hidden; /* Skjuler horisontal scrolling */
-        word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
-        white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
-    }
-    .om_tekst{
-        margin-left: 300px;
-        margin-right: 300px;
-        font-size: 20px;
-        border-radius: 5px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-        padding: 10px;
-    }
-    h1{
-        font-size: 20px;
-    }
-    .logo {
-        height: 50px;
-        border-radius: 200px;
-        border-style: solid;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-        position: absolute;
-        left: 40px; /* Juster avstand fra venstre */
-        top: 10px;  /* Juster avstand fra toppen */
-    }
-    select {
-        background-size: 12px; /* Juster størrelsen på pilen for små skjermer */
-        padding: 10px 15px; /* Øk padding for bedre klikkbarhet */
-        width: 300px;
-        font-size: 10px;
-    }
-
-    
-}
-@media only screen and (min-width: 800px) and (max-width: 1600px) {
-    header {
-        background-color: #283e50;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        width: 100%;
-        height: 150px;
-        border-bottom: 3px solid #000004; /* En fin kant under headeren */
-    }
-    .text_box {
-        margin-top: 20px;
-        height: 450px; /* Fast høyde */
-        width: 800px; /* Tilpasser seg skjermen */
-        font-size: 20px;
-        border-radius: 10px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Legger til skygge */
-        padding: 15px;
-        border: 2px solid #616fc1;
-        background: #f4f4ff; /* Lys bakgrunn for lesbarhet */
-        color: #333;
-        outline: none;
-        overflow-y: auto; /* Aktiverer scrolling for lange tekster */
-        overflow-x: hidden; /* Skjuler horisontal scrolling */
-        word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
-        white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
-    }
-    
-    h1{
-        font-size: 30px;
-    }
-    .logo {
-        height: 130px;
-        border-radius: 200px;
-        border-style: solid;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-        position: absolute;
-        left: 40px; /* Juster avstand fra venstre */
-        top: 10px;  /* Juster avstand fra toppen */
-    }
-    footer {
-        background-color: #283e50;
-        color: white;
-        text-align: center;
-        padding: 15px;
-        width: 100%;
-        margin-top: 20px;
-        font-size: 1em;
-        border-top: 3px solid #000004; /* En fin kant på toppen av footer */
-        position: relative;
-        bottom: 0;
-        margin-top: 30%;
-        height: 200px;
-    }
-    .om_tekst{
-        margin-left: 200px;
-        margin-right: 200px;
-        font-size: 20px;
-        border-radius: 5px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-        padding: 10px;
-    }
-}
