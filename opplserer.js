@@ -3,6 +3,8 @@ let voices = [];
 let voiceSelect = document.querySelector(".voice_select select");
 let textBox = document.querySelector(".text_box");
 
+
+
 // Hent stemmene som er tilgjengelige
 function getVoices() {
     voices = window.speechSynthesis.getVoices();
@@ -26,8 +28,9 @@ voiceSelect.addEventListener("change", () => {
     speech.voice = voices[parseInt(voiceSelect.value)];
 });
 
+
 // Del teksten i mindre biter
-function splitTextIntoChunks(text, chunkSize = 50) {
+function splitTextIntoChunks(text, chunkSize = 10) {
     // Del teksten i ord og grupper dem i biter av chunkSize ord hver
     let words = text.split(/\s+/);
     let chunks = [];
@@ -37,6 +40,22 @@ function splitTextIntoChunks(text, chunkSize = 50) {
     }
     return chunks;
 }
+// Lim inn ren tekst i tekstboksen
+textBox.addEventListener("paste", (event) => {
+    event.preventDefault(); // Forhindre standard liming
+    const clipboardData = event.clipboardData || window.clipboardData;
+    const plainText = clipboardData.getData("text/plain"); // Hent ren tekst
+
+    // Del teksten i avsnitt basert på linjeskift
+    const paragraphs = plainText.split(/\n+/); // Del opp ved linjeskift
+
+    // Konverter hvert avsnitt til et <p>-element
+    const formattedText = paragraphs.map(paragraph => `<p>${paragraph.trim()}</p>`).join("");
+
+    // Sett inn teksten som HTML med avsnitt
+    document.execCommand("insertHTML", false, formattedText);
+});
+
 // Les teksten i biter og marker ord under opplesning
 function readChunks(chunks, wordElements) {
     // Fjern eksisterende markeringer
@@ -78,12 +97,13 @@ function readChunks(chunks, wordElements) {
     readNextChunk();
 }
 
+
 // Start opplesningen
 document.querySelector(".lese_knapp").addEventListener("click", () => {
     // legger til en variabel for å sjekke om opplesningen er i gang
     let text = textBox.innerText;
     // splitter teksten i biter av 50 ord
-    let chunks = splitTextIntoChunks(text, 50);
+    let chunks = splitTextIntoChunks(text, 10);
     // en array for å lagre tekstnoder
     let textNodes = [];
     
@@ -129,3 +149,44 @@ document.querySelector(".fortsett_knapp").addEventListener("click", () => {
 document.querySelector(".stopp_knapp").addEventListener("click", () => {
     window.speechSynthesis.cancel();
 });
+
+const volumeSlider = document.getElementById("volume_slider");
+const volumeValue = document.getElementById("volume_value");
+
+volumeSilder.addEventListener("input", () => {
+    columeValue.textContent = volumeSlider.value;
+});
+
+function readChunks(chunks, wordElements) {
+    let currentChunkIndex = 0;
+    let globalWordIndex = 0; // Global indeks for hele teksten
+
+    function readNextChunk() {
+        if (currentChunkIndex >= chunks.length) {
+            wordElements.forEach(el => el.classList.remove("highlight"));
+            return;
+        }
+        let chunk = chunks[currentChunkIndex];
+        let speech = new SpeechSynthesisUtterance(chunk);
+        speech.voice = voices[parseInt(voiceSelect.value)];
+        speech.rate = parseFloat(document.getElementById("speed_slider").value); // Bruk sliderens verdi som hastighet
+        speech.volume = parseFloat(volumeSlider.value); // Bruk sliderens verdi som volum
+
+        speech.onboundary = (event) => {
+            if (globalWordIndex > 0) {
+                wordElements[globalWordIndex - 1].classList.remove("highlight");
+            }
+            if (globalWordIndex < wordElements.length) {
+                wordElements[globalWordIndex].classList.add("highlight");
+            }
+            globalWordIndex++;
+        };
+        speech.onend = () => {
+            currentChunkIndex++;
+            readNextChunk(); // Les neste bit
+        };
+        window.speechSynthesis.speak(speech);
+    
+    }
+    readNextChunk();
+}

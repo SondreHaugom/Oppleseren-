@@ -23,9 +23,16 @@
         <div class="voice_select">
             <select name="" id=""></select>
         </div>
-        <div class="speed_control">
-            <label for="speed_slider">Hastighet:</label>
-            <input class="Hastighet" type="range" id="speed_slider" min="0.5" max="2" step="0.1" value="1">
+        <div class="controls">
+            <div class="speed_control">
+                <label for="speed_slider">Hastighet:</label>
+                <input class="Hastighet" type="range" id="speed_slider" min="0.5" max="2" step="0.1" value="1">
+            </div>
+            <div class="volume_control">
+                <label for="volume_slider">Volum:</label>
+                <input type="range" id="volume_slider" min="0" max="1" step="0.1" value="1">
+                <span id="volume_value">1.0</span>
+            </div>
         </div>
         <button class="lese_knapp"><p class="knapp_tekst"><strong>Les opp</strong></p></button>
         <button class="pause_knapp"><p class="knapp_tekst"><strong>Pause</strong></p></button>

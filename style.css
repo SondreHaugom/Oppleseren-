@@ -63,54 +63,50 @@ h1{
 .info_tekst{
     margin-top:  20px;
 }
-.speed_control {
+/* Container for sliderne og select */
+.controls {
+    display: flex;
+    flex-direction: column; /* Plasserer elementene under hverandre */
+    align-items: flex-start; /* Justerer elementene til venstre */
+    gap: 10px; /* Avstand mellom elementene */
     margin-top: 10px;
-   
-    font-size: 16px;
+}
+
+/* Felles stil for hver kontroll (hastighet og volum) */
+.controls div {
+    display: flex;
+    flex-direction: column; /* Plasserer label og slider vertikalt */
+    font-size: 14px; /* Mindre tekst for kompakt design */
     color: #333; /* Mørk grå tekstfarge */
-    font-family: 'Arial', sans-serif;
 }
 
-.speed_control label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-#speed_slider {
-    width: 80%; /* Tilpass bredde */
-    max-width: 250px; /* Maks bredde */
-    height: 8px;
-    background: #adcda9; /* Grønnaktig bakgrunn for slider */
+/* Slider stil */
+.controls input[type="range"] {
+    width: 200px; /* Passende bredde */
+    height: 6px;
+    background: #adcda9; /* Grønnaktig bakgrunn */
     border-radius: 5px;
     outline: none;
     cursor: pointer;
 }
 
-#speed_slider::-webkit-slider-thumb {
+/* Slider tommel */
+.controls input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
-    background: #283e50; /* Mørk blågrå for tommel */
+    width: 12px;
+    height: 12px;
+    background: #283e50; /* Mørk blågrå tommel */
     border-radius: 50%;
     cursor: pointer;
 }
 
-#speed_slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+.controls input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
     background: #283e50;
     border-radius: 50%;
     cursor: pointer;
-}
-
-#speed_value {
-    display: inline-block;
-    margin-top: px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #283e50; /* Mørk blågrå for tekst */
 }
 
 footer {
