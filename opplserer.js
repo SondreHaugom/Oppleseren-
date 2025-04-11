@@ -30,7 +30,7 @@ voiceSelect.addEventListener("change", () => {
 
 
 // Del teksten i mindre biter
-function splitTextIntoChunks(text, chunkSize = 10) {
+function splitTextIntoChunks(text, chunkSize = 50) {
     // Del teksten i ord og grupper dem i biter av chunkSize ord hver
     let words = text.split(/\s+/);
     let chunks = [];
@@ -103,7 +103,7 @@ document.querySelector(".lese_knapp").addEventListener("click", () => {
     // legger til en variabel for å sjekke om opplesningen er i gang
     let text = textBox.innerText;
     // splitter teksten i biter av 50 ord
-    let chunks = splitTextIntoChunks(text, 10);
+    let chunks = splitTextIntoChunks(text, 50);
     // en array for å lagre tekstnoder
     let textNodes = [];
     

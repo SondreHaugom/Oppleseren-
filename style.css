@@ -183,3 +183,45 @@ nav a{
 }
 
 
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .text_box {
+        width: 70%; /* Full bredde på mindre skjermer */
+        height: 400px; /* Juster høyden automatisk */
+        font-size: 16px; /* Mindre fontstørrelse */
+    }
+
+    .controls {
+        width: 70%; /* Full bredde for kontroller */
+        align-items: center; /* Sentraliser kontroller */
+    }
+
+    .controls input[type="range"] {
+        width: 70%; /* Full bredde for sliderne */
+    }
+
+    .logo {
+        height: 60px; /* Mindre logo */
+        left: 5px; /* Juster avstand fra venstre */
+        top: 50px; /* Juster avstand fra toppen */
+    }
+
+    .lese_knapp, .stopp_knapp, .fortsett_knapp, .pause_knapp {
+        width: 50%; /* Full bredde for knappene */
+        margin-right: 0; /* Fjern mellomrom mellom knappene */
+        height: 40px; /* Mindre høyde */
+        font-size: 14px; /* Mindre tekst på knappene */
+    }
+
+    footer {
+        font-size: 0.8em; /* Mindre fontstørrelse i footer */
+        padding: 10px;
+    }
+    h1{
+        font-size: 20px;
+       
+    }
+}
