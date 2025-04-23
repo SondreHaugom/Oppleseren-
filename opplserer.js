@@ -73,9 +73,8 @@ function readChunks(chunks, wordElements) {
         // Lag en ny SpeechSynthesisUtterance for hver bit
         let speech = new SpeechSynthesisUtterance(chunk);
         speech.voice = voices[parseInt(voiceSelect.value)];
-
+        // legge til volum og hastighet
         speech.rate = parseFloat(document.getElementById("speed_slider").value); // Bruk sliderens verdi som hastighet
-
         speech.onboundary = (event) => {
             if (globalWordIndex > 0) {
                 wordElements[globalWordIndex - 1].classList.remove("highlight");
