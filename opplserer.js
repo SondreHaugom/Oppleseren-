@@ -7,6 +7,7 @@ let textBox = document.querySelector(".text_box");
 
 // Hent stemmene som er tilgjengelige
 function getVoices() {
+    const selectVoiceIndex = voiceSelect.value;
     voices = window.speechSynthesis.getVoices();
     voiceSelect.innerHTML = "";
     // Legg til stemmer i nedtrekkslisten
@@ -16,6 +17,13 @@ function getVoices() {
         option.value = i;
         voiceSelect.appendChild(option);
     });
+    
+    if (selectVoiceIndex && voices[selectVoiceIndex]) {
+        voiceSelect.value = selectVoiceIndex;
+    } else {
+        let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn")) || voices[0];
+        voiceSelect.value = voices.indexOf(defaultVoice);
+    }
     // Sett standard stemme til Microsoft Finn eller første tilgjengelige stemme
     let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn")) || voices[0];
     voiceSelect.value = voices.indexOf(defaultVoice);
