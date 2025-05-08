@@ -25,7 +25,10 @@
         font-size: 40px;
     
     }
-
+    .knapp_tekst{
+        text-decoration: none;
+        margin-top: 13px;
+    }
     .text_box {
         margin-top: 20px;
         height: 450px; /* Fast høyde */

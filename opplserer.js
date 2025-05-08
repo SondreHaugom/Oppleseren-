@@ -3,38 +3,38 @@ let voices = [];
 let voiceSelect = document.querySelector(".voice_select select");
 let textBox = document.querySelector(".text_box");
 
+let selectedVoiceIndex = null; // Variabel for å lagre brukerens valgte stemme
 
-
-// Hent stemmene som er tilgjengelige
 function getVoices() {
-    const selectVoiceIndex = voiceSelect.value;
     voices = window.speechSynthesis.getVoices();
     voiceSelect.innerHTML = "";
+
     // Legg til stemmer i nedtrekkslisten
     voices.forEach((voice, i) => {
         let option = document.createElement("option");
-        option.textContent = voice.name;
+        option.textContent = `${voice.name} (${voice.lang})`;
         option.value = i;
         voiceSelect.appendChild(option);
     });
-    
-    if (selectVoiceIndex && voices[selectVoiceIndex]) {
-        voiceSelect.value = selectVoiceIndex;
+
+    // Gjenopprett brukerens valgte stemme hvis den er satt
+    if (selectedVoiceIndex !== null && voices[selectedVoiceIndex]) {
+        voiceSelect.value = selectedVoiceIndex;
     } else {
+        // Sett standard stemme til Microsoft Finn eller første tilgjengelige stemme
         let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn")) || voices[0];
         voiceSelect.value = voices.indexOf(defaultVoice);
     }
-    // Sett standard stemme til Microsoft Finn eller første tilgjengelige stemme
-    let defaultVoice = voices.find(voice => voice.name.includes("Microsoft Finn")) || voices[0];
-    voiceSelect.value = voices.indexOf(defaultVoice);
 }
-// Hent stemmer når de er tilgjengelige (for nettlesere som laster dem asynkront)
-window.speechSynthesis.onvoiceschanged = getVoices;
-getVoices();
-// Hent stemmer når siden lastes inn (for nettlesere som laster dem synkront)
+
+window.speechSynthesis.onvoiceschanged = () => {
+    getVoices(); // Hent stemmer når de er tilgjengelige
+}
+// Oppdater `selectedVoiceIndex` når brukeren velger en stemme
 voiceSelect.addEventListener("change", () => {
-    speech.voice = voices[parseInt(voiceSelect.value)];
+    selectedVoiceIndex = parseInt(voiceSelect.value); // Lagre brukerens valg
 });
+
 
 
 // Del teksten i mindre biter
