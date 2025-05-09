@@ -63,6 +63,10 @@
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Økt skygge på hover */
         transform: translateY(-4px); /* Litt løft av knappen ved hover */
     }
+    .lese_knapp:active, .stopp_knapp:active, .fortsett_knapp:active, .pause_knapp:active {
+        transform: translateY(4px); /* Flytt knappen ned for trykkeffekt */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reduser skyggen */
+    }
     .info_tekst{
         margin-top:  20px;
     }
