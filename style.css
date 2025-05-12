@@ -20,7 +20,18 @@
         width: 100%;
         border-bottom: 3px solid #000004; /* En fin kant under headeren */
     }
-
+    .knapp_tekst {
+        display: flex; /* Bruk flexbox for å justere innholdet */
+        align-items: center; /* Juster ikon og tekst vertikalt */
+        justify-content: center; /* Sentraliser innholdet horisontalt */
+        gap: 8px; /* Legg til avstand mellom tekst og ikon */
+        font-weight: normal; /* Fjern fet skrift hvis ønsket */
+    }
+    
+    .knapp_tekst svg {
+        width: 20px; /* Juster ikonstørrelsen */
+        height: 20px;
+    }
     h1{
         font-size: 40px;
     
