@@ -11,6 +11,136 @@
         min-height: 100vh;
         color: #333;
     }
+    .darkmode {
+        background-color: #121212; /* Mørk bakgrunn for mørk modus */
+        color: #e0e0e0; /* Lys tekstfarge for hele body */
+    }
+        
+    .darkmode .text_box {
+        background: #1e1e1e; /* Mørk bakgrunn for tekstboksen */
+        color: #e0e0e0; /* Lys tekstfarge for bedre kontrast */
+        border-color: #2c3e50;
+    }
+    
+    .darkmode header {
+        background-color: #1e1e1e; /* Mørk bakgrunn for header */
+        color: #e0e0e0; /* Lys tekstfarge for header */
+    }
+    
+    .darkmode .lese_knapp, .darkmode .stopp_knapp, .darkmode .fortsett_knapp, .darkmode .pause_knapp {
+        background-color: #2c3e50; /* Mørk blågrå bakgrunn for knappene */
+        color: #ecf0f1; /* Lys grå tekstfarge for knappene */
+        border: 1px solid #34495e; /* Subtil mørkere kant */
+    }
+    
+    .darkmode .lese_knapp:hover, .darkmode .stopp_knapp:hover, .darkmode .fortsett_knapp:hover, .darkmode .pause_knapp:hover {
+        background-color: #34495e; /* Litt lysere blågrå på hover */
+    }
+    
+    .darkmode footer {
+        background-color: #1e1e1e; /* Mørk bakgrunn for footer */
+        color: #e0e0e0; /* Lys tekstfarge for footer */
+    }
+    
+    .darkmode .controls div {
+        color: #e0e0e0; /* Lys tekstfarge for kontrollene */
+    }
+    
+    .darkmode .controls input[type="range"] {
+        background: #34495e !important; /* Mørk blågrå bakgrunn for slider */
+    }
+    
+    .darkmode .controls input[type="range"]::-webkit-slider-thumb {
+        background: #2c3e50 !important; /* Samme farge som knappene */
+    }
+    
+    .darkmode .controls input[type="range"]::-moz-range-thumb {
+        background: #2c3e50 !important; /* Samme farge som knappene */
+    }
+    
+    .darkmode select {
+        background: #34495e; /* Mørk bakgrunn for select */
+        color: #e0e0e0; /* Lys tekstfarge for select */
+        border: 1px solid #444; /* Mørk kant for select */
+    }
+    
+    .darkmode .logo {
+        filter: brightness(0.8); /* Gjør logoen litt mørkere i mørk modus */
+    }
+    .darkmode input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #2c2c2c;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* "Thumb" – det du drar i */
+.darkmode input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #888;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.darkmode input[type="range"]::-webkit-slider-thumb:hover {
+    background: #aaa;
+}
+
+    body {
+  transition: 0.3s;
+  background: white;
+  color: black;
+}
+
+.dark-mode {
+  background: #121212;
+  color: white;
+}
+
+.switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  display: inline-block;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background: #ccc;
+  border-radius: 25px;
+  top: 0; left: 0; right: 0; bottom: 0;
+  transition: 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: white;
+  border-radius: 50%;
+  left: 3px;
+  top: 2.5px;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background: #2196F3;
+}
+
+input:checked + .slider::before {
+  transform: translateX(25px);
+}
 
     header {
         background-color: #283e50;
@@ -57,6 +187,12 @@
         word-wrap: break-word; /* Bryter lange ord slik at de ikke skaper horisontal scrolling */
         white-space: pre-wrap; /* Bevarer linjeskift fra brukerens inntasting */
         border-color: black; /* Setter kantfarge til svart */
+    }
+
+    /* Placeholder tekst styling */
+    .text_box.placeholder {
+        color: #888; /* Grå farge for placeholder tekst */
+        font-style: italic; /* Kursiv for å skille fra vanlig tekst */
     }
     .lese_knapp, .stopp_knapp, .fortsett_knapp, .pause_knapp {
         background-color: #adcda9;
@@ -169,7 +305,7 @@
 
     select:focus {
         outline: none; /* Fjerner standard fokusramme */
-        border-color: #888; /* Mørkere kant ved fokus */
+        border-color: #ffffff; /* Mørkere kant ved fokus */
     }
     .om_tekst{
         margin-left: 200px;

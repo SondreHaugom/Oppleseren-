@@ -5,6 +5,53 @@ let textBox = document.querySelector(".text_box");
 
 let selectedVoiceIndex = null; // Variabel for å lagre brukerens valgte stemme
 
+
+// legger til dark og light modus 
+const modeToggle = document.getElementById("modeToggle");
+modeToggle.addEventListener("change", () => {
+    document.body.classList.toggle("darkmode");
+})
+// Håndter placeholder tekst
+function initializePlaceholder() {
+    const placeholder = textBox.getAttribute('data-placeholder');
+    
+    // Vis placeholder tekst hvis tekstboksen er tom
+    if (textBox.innerText.trim() === '') {
+        textBox.innerText = placeholder;
+        textBox.classList.add('placeholder');
+    }
+}
+
+// Fjern placeholder når brukeren klikker eller fokuserer
+textBox.addEventListener('focus', function() {
+    if (textBox.classList.contains('placeholder')) {
+        textBox.innerText = '';
+        textBox.classList.remove('placeholder');
+    }
+});
+
+// Vis placeholder igjen hvis tekstboksen blir tom
+textBox.addEventListener('blur', function() {
+    if (textBox.innerText.trim() === '') {
+        const placeholder = textBox.getAttribute('data-placeholder');
+        textBox.innerText = placeholder;
+        textBox.classList.add('placeholder');
+    }
+});
+
+// Fjern placeholder når brukeren begynner å skrive
+textBox.addEventListener('input', function() {
+    if (textBox.classList.contains('placeholder')) {
+        textBox.innerText = '';
+        textBox.classList.remove('placeholder');
+    }
+});
+
+// Initialiser placeholder når siden lastes
+document.addEventListener('DOMContentLoaded', function() {
+    initializePlaceholder();
+});
+
 function getVoices() {
     voices = window.speechSynthesis.getVoices();
     voiceSelect.innerHTML = "";
@@ -107,6 +154,12 @@ function readChunks(chunks, wordElements) {
 
 // Start opplesningen
 document.querySelector(".lese_knapp").addEventListener("click", () => {
+    // Sjekk om tekstboksen inneholder placeholder tekst
+    if (textBox.classList.contains('placeholder')) {
+        alert('Vennligst legg til tekst før opplesning');
+        return;
+    }
+    
     // legger til en variabel for å sjekke om opplesningen er i gang
     let text = textBox.innerText;
     // splitter teksten i biter av 50 ord
