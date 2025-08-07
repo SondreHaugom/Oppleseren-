@@ -1,21 +1,15 @@
-Reader is a tool that helps convert text into speech. This tool is useful for people who prefer or need to listen to text instead of reading it themselves.
+Om Oppleseren
+Oppleseren er en enkel og brukervennlig webapplikasjon for opplesning av tekst. Målet med denne tjenesten er å gjøre opplesning tilgjengelig for alle som ønsker eller har behov for det – enten det er for bedre tilgjengelighet, læring eller bekvemmelighet.
 
-Features:
-Reads text aloud using synthetic speech
-Simple and intuitive to use
-Supports multiple languages (depending on the browser)
-Best Performance
-The reader works best in Microsoft Edge, as this browser provides the best support for text-to-speech functionality.
+Funksjoner
+Brukervennlig grensesnitt
 
-Usage:
-Open the tool in your browser.
-Paste or type the text you want to be read aloud.
-Press the play button to start the reading.
-Requirements
-A modern browser (Microsoft Edge recommended)
-An internet connection may be required for some features
-Contributions
-If you’d like to contribute to the project, feel free to submit pull requests or report issues via GitHub Issues.
+Støtte for flere språk og dialekter
 
-License:
-This project is licensed under the MIT License.
+Justerbar lesehastighet
+
+Justerbart volum
+
+Mulighet for å pause, fortsette og stoppe opplesningen
+
+Med denne tjenesten skal alle ha mulighet til å bruke den og få glede av den – uansett behov eller forutsetninger.
