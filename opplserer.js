@@ -59,6 +59,13 @@ function getVoices() {
     voices = window.speechSynthesis.getVoices();
     voiceSelect.innerHTML = "";
 
+    const norskStemmer = voices.filter(v => v.lang.startsWith("no"));
+    if (norskStemmer.length > 0) {
+        
+    } else {
+        // Ingen norske stemmer funnet, vis en melding eller håndter dette tilfellet
+    }
+
     // Legg til stemmer i nedtrekkslisten
     voices.forEach((voice, i) => {
         let option = document.createElement("option");
