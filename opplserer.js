@@ -11,6 +11,9 @@ const modeToggle = document.getElementById("modeToggle");
 modeToggle.addEventListener("change", () => {
     document.body.classList.toggle("darkmode");
 })
+
+
+
 // Håndter placeholder tekst
 function initializePlaceholder() {
     const placeholder = textBox.getAttribute('data-placeholder');
